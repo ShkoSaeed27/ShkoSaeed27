@@ -257,15 +257,3 @@ nav, .navbar {
     font-family: 'Aldrich';
     font-style:normal;
 }
-
-/* Tablet and smaller devices */
-@media screen and (max-width: 768px) {
-  .container {
-    flex-direction: column;
-  }
-}
-img, video {
-  max-width: 100%;
-  height: auto;
-  display: block;
-}
