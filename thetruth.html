@@ -193,8 +193,10 @@
                     decryptSingleLine(currentLineIndex, () => {
                         if (currentLineIndex < originalLines.length - 1) {
                             hintElement.innerText = "press SPACEBAR to continue transmission...";
+                            hintElement.style.color = "#3399ff";
                         } else {
                             hintElement.innerText = "FEED ENDED. SYSTEM TERMINATED."
+                            hintElement.style.color = "#ff3333";
                         }
                     });
                 }
