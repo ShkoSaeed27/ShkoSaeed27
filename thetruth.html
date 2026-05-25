@@ -189,6 +189,7 @@
 
                     currentLineIndex++;
                     hintElement.innerText = "Decrypting pipeline data...";
+                    hintElement.style.color = "#008000";
 
                     decryptSingleLine(currentLineIndex, () => {
                         if (currentLineIndex < originalLines.length - 1) {
