@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <title>PUZZLE 2</title>
+</head>
+<style>
+
+form{
+  margin-left: 31%;
+  margin-top: 180px;
+  width: 500px;
+  height: 300px;
+  background-color: aqua;
+
+  position: absolute;
+  display: grid;
+  grid-template-columns: repeat(4,100px);
+  grid-template-rows: repeat(2,100px);
+  justify-content: center;
+  align-items: center;
+
+  row-gap: -5px;
+  column-gap: -10px;
+  overflow: hidden;
+
+  font-size: 0;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+/*
+div {
+  height: 100px;
+  width: 50px;
+  background-color: rgb(0, 235, 215);
+  rotate: 0deg;
+  border: 1px solid black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*/
+.center-wire2,
+.center-wire,
+.end-wire,
+.end-wire2,
+.corner-wire,
+.corner-wire2{
+    cursor: pointer;
+    display: block;
+    width:100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    margin-right: -5px;
+    margin-bottom: -5px ;
+
+    transform: scale(1.02);
+    object-fit: contain;
+}
+
+.center-wire{
+    margin-top: 45px ;
+}
+.center-wire2{
+    margin-top: 135px;
+    margin-left: 20px;
+}
+
+.end-wire{
+    margin-top: 45px;
+}
+
+.end-wire2{
+    margin-top: 135px;
+    margin-left: 20px;
+}
+
+.corner-wire{
+    margin-top: 100px;
+}
+
+.corner-wire2{
+    margin-left: 10px;
+    margin-top: 60px;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<nav>
+<div class="titleBox">
+<h1 class="wTitle"> THE LAST WEB</h1>
+</div>
+</nav>
+
+<div class="inst-box"> 
+<p class="inst"> rotate the wires in correct position  to enter the dark side </p>
+</div>
+
+<form>
+<img src="assets/end-wire.png" class="end-wire" id="p1" data-rotation="0" data-map-row="0" data-map-col="0">
+<img src="assets/center-wire.png" class="center-wire" id="p2" data-rotation="0" data-map-row="0" data-map-col="1">
+<img src="assets/center-wire.png" class="center-wire" id="p3" data-rotation="0" data-map-row="0" data-map-col="2">
+<img src="assets/corner-wire.png" class="corner-wire" id="p4" data-rotation="0" data-map-row="0" data-map-col="3">
+
+<img src="assets/end-wire.png" class="end-wire2" id="p5" data-rotation="0" data-map-row="1" data-map-col="0">
+<img src="assets/center-wire.png" class="center-wire2" id="p6" data-rotation="0" data-map-row="1" data-map-col="1">
+<img src="assets/center-wire.png" class="center-wire2" id="p7" data-rotation="0" data-map-row="1" data-map-col="2">
+<img src="assets/corner-wire.png" class="corner-wire2" id="p8" data-rotation="0" data-map-row="1" data-map-col="3">
+</form>
+
+
+<script src="click-spark.js"></script>
+
+<script>
+    const sparkEffect = new Clickspark({
+        sparkColor: '#fff',
+        sparkSize: 10,
+        sparkRadius: 15,
+        sparkCount: 8,
+        duration: 400,
+        easing: 'ease-out'
+    });
+</script>
+
+<script>
+
+let map = [
+[
+              [180, "p1"],[90, "p2"],[270, "p3"],[270, "p4"]
+
+],
+[
+            [90, "p5"],[270, "p6"],[0, "p7"],[0,"p8"]
+]
+];
+
+const solution = [
+[
+              [0, "p1"],[180, "p2"],[0, "p3"],[0, "p4"]
+],
+[
+            [0, "p5"],[0, "p6"],[0, "p7"],[90, "p8"]
+]
+];
+
+p1 = document.getElementById("p1");
+p2 = document.getElementById("p2");
+p3 = document.getElementById("p3");
+p4 = document.getElementById("p4");
+p5 = document.getElementById("p5");
+p6 = document.getElementById("p6");
+p7 = document.getElementById("p7");
+p8 = document.getElementById("p8");
+
+
+function initaliseTiles(){
+    // Load the correct pieces into the board, using the map
+    // Set the rotations for each piece at the start of the game using the MAP
+    map.forEach(element => {
+        element.forEach(piece =>{
+            //console.log(piece[0]);
+            piece_id = document.getElementById(piece[1]);
+            piece_id.style.rotate = piece[0] + "deg";
+            piece_id.setAttribute("data-rotation", piece[0]);
+        })
+    });
+}
+
+initaliseTiles();
+
+function tileClickHandler(e){
+    // Updating the position when clicked
+    //console.log(e.target.id)
+              cur_rot = parseInt(e.target.getAttribute("data-rotation"));
+              cur_row = parseInt(e.target.getAttribute("data-map-row"));
+              cur_col = parseInt(e.target.getAttribute("data-map-col"));
+              let new_rot = cur_rot + 90;
+
+              if (new_rot >= 360) {
+                new_rot = 0;
+              }
+
+              e.target.style.rotate = `${new_rot}deg`;
+              map[cur_row][cur_col][0] = new_rot
+              e.target.setAttribute("data-rotation", new_rot);              
+              //console.log(e.target.getAttribute("data-rotation"));
+
+              checkSolution();
+
+
+}
+
+function checkSolution(){
+    //console.log(map)
+    const solution_check_array = solution.flat(1);
+    const map_check_array = map.flat(1);
+    map_length = map_check_array.length;
+
+    for(i=0; i < map_length; i++){
+        if(solution_check_array[i][0] == map_check_array[i][0]){
+            console.log("Match " + map_check_array[i][1]);
+        }
+        else{
+            return;
+        }
+    }
+
+    localStorage.setItem('puzzleComplete', 'true');
+    let userConfirmed = confirm("puzzle complete")
+
+    if (userConfirmed) {
+        window.location.href = "thedarkside.html";
+    } else {
+        console.log("redo the puzzle.");
+    }
+
+
+}
+
+p1.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p2.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p3.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p4.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p5.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p6.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p7.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p8.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+</script>
+</body>
+</html>

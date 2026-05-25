@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <title>PUZZLE</title>
+</head>
+<style>
+
+form{
+  margin-left: 32%;
+  margin-top: 180px;
+  width: 400px;
+  background-color: aqua;
+
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  font-size: 0;
+  letter-spacing: 0;
+  word-spacing: 0;
+}
+
+/*
+div {
+  height: 100px;
+  width: 50px;
+  background-color: rgb(0, 235, 215);
+  rotate: 0deg;
+  border: 1px solid black;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+*/
+.puzzle-piece{
+     cursor: pointer;
+    display: block;
+    width:100px;
+    height: 100px;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+    margin-right: -5px;
+    margin-bottom: -5px ;
+
+    transform: scale(1.02);
+    object-fit: contain;
+}
+
+
+</style>
+
+</head>
+<body>
+
+<nav>
+<div class="titleBox">
+<h1 class="wTitle"> THE LAST WEB</h1>
+</div>
+</nav>
+
+<div class="inst-box"> 
+<p class="inst"> rotate the boxes in correct position to complete task</p>
+</div>
+
+<form>
+<img src="assets/end-wire.png" class="puzzle-piece" id="p1" data-rotation="0" data-map-row="0" data-map-col="0">
+<img src="assets/center-wire.png" class="puzzle-piece" id="p2" data-rotation="0" data-map-row="0" data-map-col="1">
+<img src="assets/center-wire.png" class="puzzle-piece" id="p3" data-rotation="0" data-map-row="0" data-map-col="2">
+<img src="assets/end-wire.png" class="puzzle-piece" id="p4" data-rotation="0" data-map-row="0" data-map-col="3">
+</form>
+
+
+<script src="click-spark.js"></script>
+
+<script>
+    const sparkEffect = new Clickspark({
+        sparkColor: '#fff',
+        sparkSize: 10,
+        sparkRadius: 15,
+        sparkCount: 8,
+        duration: 400,
+        easing: 'ease-out'
+    });
+</script>
+
+<script>
+
+let map = [
+[
+              [180, "p1"],[90, "p2"],[270, "p3"],[270, "p4"]
+]
+];
+
+const solution = [
+[
+              [0, "p1"],[180, "p2"],[0, "p3"],[180, "p4"]
+]
+];
+
+p1 = document.getElementById("p1");
+
+function initaliseTiles(){
+    // Load the correct pieces into the board, using the map
+    // Set the rotations for each piece at the start of the game using the MAP
+    map.forEach(element => {
+        element.forEach(piece =>{
+            //console.log(piece[0]);
+            piece_id = document.getElementById(piece[1]);
+            piece_id.style.rotate = piece[0] + "deg";
+            piece_id.setAttribute("data-rotation", piece[0]);
+        })
+    });
+}
+
+initaliseTiles();
+
+function tileClickHandler(e){
+    // Updating the position when clicked
+    //console.log(e.target.id)
+              cur_rot = parseInt(e.target.getAttribute("data-rotation"));
+              cur_row = parseInt(e.target.getAttribute("data-map-row"));
+              cur_col = parseInt(e.target.getAttribute("data-map-col"));
+              let new_rot = cur_rot + 90;
+              if(new_rot == 360){
+                new_rot = 0;
+              }
+              //console.log(new_rot);
+              
+              e.target.style.rotate = `${new_rot}deg`;
+              map[cur_row][cur_col][0] = new_rot
+              e.target.setAttribute("data-rotation", new_rot);              
+              //console.log(e.target.getAttribute("data-rotation"));
+
+              checkSolution();
+
+}
+
+function checkSolution(){
+    //console.log(map)
+    const solution_check_array = solution.flat(1);
+    const map_check_array = map.flat(1);
+    let match_tracker = []
+    let success = false;
+    map_length = map_check_array.length;
+    solution_length = solution_check_array.length;
+    //console.log(map_check_array);
+
+    for(i=0; i < map_length; i++){
+        console.log(i);
+        //console.log(solution_check_array[i][0]);
+        //console.log(map_check_array[i][0]);
+        if(solution_check_array[i][0] == map_check_array[i][0]){
+            console.log("Match " + map_check_array[i][1]); 
+        }
+        else{
+            return;
+        }
+    }
+
+    localStorage.setItem('puzzleComplete', 'true');
+
+    let userConfirmed = confirm("puzzle complete")
+
+    if (userConfirmed) {
+        window.location.href = "thelastNetwork.html";
+    } else {
+        console.log("redo the puzzle.");
+    }
+
+
+}
+
+p1.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p2.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p3.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+
+p4.addEventListener("click",(e) => {
+    tileClickHandler(e)
+    }
+);
+</script>
+</body>
+</html>

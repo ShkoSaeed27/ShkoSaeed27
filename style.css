@@ -1,0 +1,259 @@
+/*1. GLOBAL & BODY STYLES */
+body {
+    background-color: #3F0000;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.darksideB{
+    background: #000000;
+}
+
+/*2. HEADER / NAVIGATION (Works for all pages) */
+nav, .navbar {
+    position: relative;     
+    text-align: center;     
+    width: 100%;
+    padding-top: 30px;      
+}
+
+/* The Return Button */
+.return {
+    position: absolute;     
+    top: 10px;              
+    left: 30px;        
+    display: inline-block;
+}
+
+.return img {
+    width: 120px;
+    height: auto;
+}
+
+/*3. TITLE STYLES */
+.HtitleBox,
+.titleBox {
+    display: inline-block;
+    background: #335364;
+    border: 3px solid #59b7ff;
+    padding: 5px 30px;      
+}
+
+.wTitle {
+    color: #000000;
+    -webkit-text-stroke: 1px #4DC0FF;
+    font-family: "Aldrich";
+    letter-spacing: 25px;   
+    margin: 0;
+}
+
+/*4. HOMEPAGE TASK BOX */
+.taskBox {
+    width: 50%;
+    min-height: 260px;
+    border: 2px solid #4db2ff;
+    background: #335364;
+    text-align: center;
+    box-sizing: border-box;
+    margin: 5% auto 0 auto; 
+    padding: 20px;
+}
+
+.taskBox p {
+    color: white;
+    font-family: "Aldrich", sans-serif;
+    font-size: 26px;
+    line-height: 1.3;
+    margin: 0;
+}
+/* 5. HISTORY PAGE STYLES */
+.HtitleBox {
+    margin-top: 35px;
+    margin-left: 25%;
+}
+
+.hisPara {
+    width: 800px;
+    min-height: auto;
+    margin-left: 17%;
+    background-color: #D8FFFC;
+}
+
+.paragraph {
+    text-align: center;
+    font-size: 28px;
+}
+
+/* 6. DOCUMENTS PAGE STYLE */
+.uploadBox {
+    background: #335364;
+    border: 3px solid #59b7ff;
+    width: 400px;
+    min-height: 200px;
+    margin: 15% auto 0 auto; 
+}
+
+.guide {
+    text-align: center;
+    font-size: 25px;
+    margin-top: 80px;
+    font-family: "Aldrich";
+    color: #000000;
+    -webkit-text-stroke: 1px #4DC0FF;
+    letter-spacing: 2px;
+}
+
+/*7. PUZZLE PAGE STYLES*/
+.inst-box {
+    position: absolute;
+    background: #335364;
+    border: 2px solid #4DC0FF;
+    margin-left: 33%;
+    margin-top: 65px;
+    font-size: 20px;
+}
+
+.inst {
+    font-family: "Aldrich";
+    -webkit-text-stroke: 3px solid #4db2ff;
+}
+
+/* 8. BUTTONS (Shared Base Styles) */
+.continue,
+.warHis,
+.truth,
+.TRUTH,
+.submitFile,
+.puzbutton,
+.hisbutton,
+.Docbutton, 
+.TLNbutton {
+    background: #4f6d86;
+    border: 3px solid #5db8ff;
+    border-radius: 14px;
+    color: #2d4152;
+    font-family: "Aldrich", sans-serif;
+    font-size: 15px; 
+    text-decoration: none;
+    -webkit-text-stroke: 1.5px #67c1ff;
+    
+    display: inline-block;
+    width: fit-content;      
+    padding: 12px 30px;      
+    
+    box-shadow:
+        inset 0 0 0 3px #2e4353,
+        0 4px 0 #2a3946;
+        
+    transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.TLNbutton {
+    display: block;
+    margin: 30px auto 0 auto;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.submitFile {
+    display: block;
+    margin: 20px auto 0 auto;
+    font-size: 30px;
+    letter-spacing: 2px;
+}
+
+.TRUTH {
+    background: red;
+    border: 0;
+    border-radius: 0;
+    margin-left: 90%;
+    width: 50px;
+    text-align: center;
+}
+
+.warHis{
+    background: #FF1515;
+    text-align: center;
+    -webkit-text-stroke: 1.5px black;
+    font-family: 'Aldrich';
+    font-weight: bold;
+    border-radius: 1px solid #32B6FF;
+}
+
+.truth{
+    background: #FF1515;
+    text-align: center;
+    -webkit-text-stroke: 1.5px black;
+    font-family: 'Aldrich', sans-serif;
+    font-weight: bold;
+    border-radius: 1px solid #32b6ff;
+}
+
+.continue{
+    margin-left: 35%;
+}
+.continue { letter-spacing: 7px;}
+.warHis { letter-spacing: 7px;}
+.truth  { letter-spacing: 7px; }
+.Docbutton { letter-spacing: 5px; }
+.hisbutton { letter-spacing: 7px; }
+.puzbutton { letter-spacing: 7px; }
+
+/* Shared Hover States */
+.continue:hover,
+.warHis:hover,
+.truth:hover,
+.LIES:hover,
+.submitFile:hover,
+.puzbutton:hover,
+.hisbutton:hover,
+.TLNbutton:hover,
+.Docbutton:hover {
+    transform: translateY(2px);
+    box-shadow: inset 0 0 0 3px #2e4353,
+                0 2px 0 #2a3946;
+}
+
+/* 9. FLEX LAYOUT CONTAINERS & TOGGLES */
+.button-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+    margin-top: 50px;
+    width: 100%;
+}
+.hidden {
+    display: none !important;
+}
+
+.theyareLying{
+    background-color: #FF0000;
+    width: 360px;
+    margin-left: 35%;
+    margin-top: 5%;
+}
+.darksideT,
+.theyareLyingS{
+    font-size: 40px;
+    font-family: "Aldrich";
+    font-weight: bold;
+}
+
+.darksideT{
+    -webkit-text-stroke: 1px #4f6d86;
+}
+
+.warning{
+    background: #FF0000;
+    width: 750px;
+    height: 50px;
+    margin-left: 19%;
+    margin-top: 20%;
+}
+.warningText{
+    font-size: 40px;
+    font-family: 'Aldrich';
+    font-style:normal;
+}

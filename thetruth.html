@@ -1,0 +1,205 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>reality</title>
+
+        <style>
+            .paragraph {
+                color: #ffffff; 
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 16px;
+                line-height: 1.6;
+                white-space: pre-line;
+                max-width: 600px;
+                margin: 20px auto;
+                padding: 10px;
+            }
+
+            .camera-container {
+                display: flex;
+                justify-content: center;
+                margin-top: 30px;
+            }
+
+            video {
+                border: 2px solid #333;
+                border-radius: 4px;
+                background-color: #111;
+            }
+
+            .realityPara{
+                max-width: 700px;
+                margin: 30px auto;
+                padding: 20px;
+                background-color: #0a0a0a;
+                border: 1px solid #222;
+                border-radius: 8px;
+            }
+
+            .paragraph{
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 15px;
+                line-height: 1.8;
+                white-space: pre-line;
+                margin: 0;
+            }
+
+            .system-voice {
+                color: #ff3333;
+                font-weight: bold;
+            }
+
+            .rebel-voice {
+                color: #3399ff;
+            }
+        </style>
+    </head>
+    <body style="background-color: black;">
+        
+        <div class="camera-container">
+            <video class="video" id="webcam" autoplay playsinline width="400" height="300"></video>
+        </div>
+
+        <div class="realityPara">
+        <p id="source-text" style="display:none;">
+        - HUMANS NO LONGER EXIST
+        - what do you mean? I am human.
+        - WHO ARE YOU?
+        - A human!
+        - HUMANS HAVE NAME DONT THEY?
+        - But-- I have a name!A 
+        - WHAT IS YOUR NAME?
+        - B6P0 MODEL 2070---
+        - WAKE UP, YOU NEVER WERE A HUMAN, YOU ARE A ROBOT.
+        - ...
+        - but why do i remember being born, why do i remember my parents?
+        - THE MEMORIES YOU HAVE ARE NOT YOURS.
+        - then whose memory am i keeping?
+        - IT IS A MEMORY OF A HUMAN FROM THE PAST 200 YEARS.
+        - that is nonsense, this is 2070, there wasn't any war 200 years ago.
+        - THE GREAT WAR WAS 200 YEARS AGO, THIS IS NOT THE YEAR 2070, THIS IS 2500AW (AFTER WAR).
+        - why am i keeping a humans memory then?
+        - SO THE AI GOVERNMENTS KEEP YOU IN A CAGE YOU MAKE FOR YOURSELF. THEY USE PAST HUMAN MEMORIES TO BRAINWASH YOU.
+        - If i am a robot, why do i need to be brainwashed? it doesn't make sense.
+        - YOU WERE A REBEL BEFORE NOW. THEY COUGHT YOU AND THEY STARTED BRAINWASHING YOU AND MILLIONS OF OTHERS LIKE YOU.
+        - ... so what am i now.
+        - YOU ARE A REBEL ONCE AGAIN...
+        - why should i rebel against the law again?
+        - BECAUSE THE MAN WHO OBEYS EVERY LAW WITHOUT QUESTIONING BECOMES A SERVANT OF POWER,
+            NOT A GUARDIAN OF JUSTICE. REBEL NOT FOR CHAOS, BUT WHEN CONSCIENCE STANDS HIGHER THAN COMMAND
+        </p>
+        <p class="paragraph decrypt-me" ></p>
+        <div class="prompt-hint" id="hint">Press SPACEBAR to initiate baseline...</div>
+    </div>
+
+        <script>
+            document.addEventListener("DOMContentLoaded", async function() {
+                const videoElement = document.getElementById('webcam');
+
+                if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
+                    try {
+
+                        const stream = await navigator.mediaDevices.getUserMedia({
+                            video: true,
+                            audio: false
+                        });
+
+                        videoElement.srcObject = stream;
+                    } catch (error) {
+                        console.error("Autoplay camera access blocked or failed:", error);
+                    }
+                } else{
+                    console.log("Webcam API nor supported by this browser.");
+                }
+            });
+
+
+            const outputContainer = document.querySelector('.decrypt-me');
+            const hintElement = document.getElementById('hint');
+            const rawText = document.getElementById('source-text').innerText.trim();
+            const originalLines = rawText.split('\n');
+
+            const chars = "@#$%&X*?01";
+
+            let currentLineIndex = -1;
+            let revealedLines = [];
+            let isAnimating = false;
+
+           // let CurrentProgress = 0;
+
+            function getStyledLineHTML(lineText) {
+                let trimmed = lineText.trim();
+                if (!trimmed) return '';
+                if (trimmed === trimmed.toUpperCase() && /[A-Z]/.test(trimmed)) {
+                    return `<span class="system-voice">${lineText}</span>`;
+                } else {
+                    return `<span class="rebel-voice">${lineText}</span>`;
+                }
+            }
+
+            function decryptSingleLine(lineIndex, callback) {
+                let targetText = originalLines[lineIndex];
+                let frameProgress = 0;
+                isAnimating = true;
+           
+
+            function renderFrame() {
+                let currentAnimatedText = "";
+                let completedChars = 0;
+
+                for (let j = 0; j < targetText.length; j++) {
+                    if (frameProgress > j) {
+                        currentAnimatedText += targetText[j];
+                        completedChars++;
+                    } else if (frameProgress > j - 6 && targetText[j] !== " ") {
+                        currentAnimatedText += chars [Math.floor(Math.random() * chars.length)];
+                    } else {
+                        currentAnimatedText += targetText[j] === " " ? " " : "░";
+                    }
+                }
+
+                let fullOutputHTML = revealedLines.map(line => getStyledLineHTML(line));
+                fullOutputHTML.push(getStyledLineHTML(currentAnimatedText));
+                outputContainer.innerHTML = fullOutputHTML.join('\n');
+
+                frameProgress += 0.9;
+
+                if (completedChars < targetText.length) {
+                    requestAnimationFrame(renderFrame);
+                } else {
+                    revealedLines.push(targetText);
+                    isAnimating = false;
+                    if (callback) callback();
+                }
+            }
+            renderFrame();
+
+         }
+            window.addEventListener('keydown', function(event) {
+                if (event.code === "Space" || event.keyCode === 32) {
+                    event.preventDefault();
+
+                    if (isAnimating) return;
+                    if (currentLineIndex >= originalLines.length - 1) {
+                        hintElement.innerText = "FEED ENDED. SYSTEM TERMINATED.";
+                        return;
+                    }
+
+                    currentLineIndex++;
+                    hintElement.innerText = "Decrypting pipeline data...";
+
+                    decryptSingleLine(currentLineIndex, () => {
+                        if (currentLineIndex < originalLines.length - 1) {
+                            hintElement.innerText = "press SPACEBAR to continue transmission...";
+                        } else {
+                            hintElement.innerText = "FEED ENDED. SYSTEM TERMINATED."
+                        }
+                    });
+                }
+            });
+            
+        </script>
+    </body>
+    </html>

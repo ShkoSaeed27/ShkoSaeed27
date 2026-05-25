@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE LAST NETWORK</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+</head>
+
+<body>
+
+    <div class="navbar">
+        <a href="index.html" class="return">
+            <img src="assets/keyboard_return.png" class="return">
+        </a>
+
+        <div class="titleBox">
+            <h1 class="wTitle">THE LAST WEB</h1>
+        </div>
+    </div>
+        
+    <div class = "button-container">
+    <a href="documents.html" class="Docbutton">DOCUMENTS</a>
+    <a href="history.html" class="hisbutton">HISTORY</a>
+    <a href="puzzle-1.html" class="puzbutton" id="puzzle-btn">PUZZLE</a>
+    </div>
+
+    <div class="theyareLying">
+        <p class="theyareLyingS decrypt-me hidden" id="secret-msg-box">
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+
+        </p>
+    </div>
+
+<script src="text-decrypt.js"></script>
+<script src="click-spark.js"></script>
+
+<script>
+    const sparkEffect = new Clickspark({
+        sparkColor: '#fff',
+        sparkSize: 10,
+        sparkRadius: 15,
+        sparkCount: 8,
+        duration: 400,
+        easing: 'ease-out'
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        const puzzleButton = document.getElementById('puzzle-btn');
+        const isUnlocked = localStorage.getItem('puzzleUnlocked');
+
+        if (isUnlocked === 'true') {
+            puzzleButton.classList.remove('hidden');
+        } else{
+            puzzleButton.classList.add('hidden');
+        }
+
+        const secretMsgBox = document.getElementById('secret-msg-box');
+        const puzzleComplete = localStorage.getItem('puzzleComplete');
+
+        if (puzzleComplete === 'true') {
+            secretMsgBox.classList.remove('hidden');
+            if (typeof DecryptedText !== 'undefined') {
+                    new DecryptedText(secretMsgBox, { speed: 60, maxIterations: 100 });
+            }
+        }
+    })
+</script>
+</body>
+</html>

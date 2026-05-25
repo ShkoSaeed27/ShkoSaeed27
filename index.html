@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOMEPAGE</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="body">
+
+    <nav>
+        <div class="titleBox">
+        <h1 class="wTitle"> THE LAST WEB</h1>
+    </div>
+    </nav>
+    
+    
+    <div class="taskBox">
+        <p class="decrypt-me">
+    You have been given a task to complete:
+    STEP 1: PRESS THE BUTTON BELLOW
+    STEP 2: ENTER THE DOCUMENTS PAGE.
+    STEP 3: UPLOAD THE FILE THAT IS IN YOUR MEMORY.
+        </p>
+    </div>
+    <a href="thelastNetwork.html" class="TLNbutton">
+        TLN PAGE
+    </a>
+
+    <a href="puzzle-2.html" class="TRUTH hidden" id="truth-btn">
+    <p class="TRUTHt">TRUTH</p>
+    </a>
+    <script src="click-spark.js"></script>
+
+<script>
+    const sparkEffect = new Clickspark({
+        sparkColor: '#fff',
+        sparkSize: 10,
+        sparkRadius: 15,
+        sparkCount: 8,
+        duration: 400,
+        easing: 'ease-out'
+    });
+</script>
+<script>
+    document.addEventListener("DOMContentLoaded", function(){
+        const truthButton = document.getElementById('truth-btn');
+        const puzzleComplete = localStorage.getItem('puzzleComplete');
+
+        if (puzzleComplete === 'true') {
+            truthButton.classList.remove('hidden');
+        } else {
+            truthButton,classList.add('hidden');
+        }
+    });
+</script>
+</body>
+</html>

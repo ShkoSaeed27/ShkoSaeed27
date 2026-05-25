@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="uploadBox">
+        <p class="guide">
+            PRESS UPLOAD BUTTON
+        </p>
+    </div>
+    <a href="thelastNetwork.html" class="return">
+            <img src="assets/keyboard_return.png" class="return">
+        </a>
+
+        <a href="thelastNetwork.html" class="submitFile">
+            SUBMIT
+        </a>
+
+
+<script src="click-spark.js"></script>
+
+<script>
+    const sparkEffect = new Clickspark({
+        sparkColor: '#fff',
+        sparkSize: 10,
+        sparkRadius: 15,
+        sparkCount: 8,
+        duration: 400,
+        easing: 'ease-out'
+    });
+</script>
+<script>
+    const submitBtn = document.querySelector('.submitFile');
+
+    submitBtn.addEventListener('click', function(){
+        localStorage.setItem('puzzleUnlocked', 'true');
+    })
+</script>
+</body>
+</html>
