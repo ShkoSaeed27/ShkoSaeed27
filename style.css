@@ -1,4 +1,4 @@
-/*1. GLOBAL & BODY STYLES */
+
 body {
     background-color: #36454F;
     margin: 0;
@@ -6,24 +6,25 @@ body {
     box-sizing: border-box;
 }
 
+
 body.glitch-alarm {
     animation: backgroundStrobe 0.8s infinite alternate;
 }
 
 @keyframes backgroundStrobe {
-    0%{
+    0% {
         background-color: #335364;
     }
-    100%{
+    100% {
         background-color: #8b0000;
     }
 }
 
-.darksideB{
+.darksideB {
     background: #000000;
 }
 
-/*2. HEADER / NAVIGATION (Works for all pages) */
+
 nav, .navbar {
     position: relative;     
     text-align: center;     
@@ -31,7 +32,7 @@ nav, .navbar {
     padding-top: 30px;      
 }
 
-/* The Return Button */
+
 .return {
     position: absolute;     
     top: 10px;              
@@ -44,7 +45,7 @@ nav, .navbar {
     height: auto;
 }
 
-/*3. TITLE STYLES */
+
 .HtitleBox,
 .titleBox {
     display: inline-block;
@@ -61,7 +62,7 @@ nav, .navbar {
     margin: 0;
 }
 
-/*4. HOMEPAGE TASK BOX */
+
 .taskBox {
     width: 50%;
     min-height: 260px;
@@ -80,7 +81,8 @@ nav, .navbar {
     line-height: 1.3;
     margin: 0;
 }
-/* 5. HISTORY PAGE STYLES */
+
+
 .HtitleBox {
     margin-top: 35px;
     margin-left: 25%;
@@ -98,7 +100,7 @@ nav, .navbar {
     font-size: 28px;
 }
 
-/* 6. DOCUMENTS PAGE STYLE */
+
 .uploadBox {
     background: #335364;
     border: 3px solid #59b7ff;
@@ -117,7 +119,7 @@ nav, .navbar {
     letter-spacing: 2px;
 }
 
-/*7. PUZZLE PAGE STYLES*/
+
 .inst-box {
     position: absolute;
     background: #335364;
@@ -133,7 +135,7 @@ nav, .navbar {
     color: white;
 }
 
-/* 8. BUTTONS (Shared Base Styles) */
+
 .continue,
 .warHis,
 .truth,
@@ -186,7 +188,7 @@ nav, .navbar {
     text-align: center;
 }
 
-.warHis{
+.warHis {
     background: #FF1515;
     text-align: center;
     -webkit-text-stroke: 1.5px black;
@@ -195,7 +197,7 @@ nav, .navbar {
     border-radius: 1px solid #32B6FF;
 }
 
-.truth{
+.truth {
     background: #FF1515;
     text-align: center;
     -webkit-text-stroke: 1.5px black;
@@ -204,17 +206,17 @@ nav, .navbar {
     border-radius: 1px solid #32b6ff;
 }
 
-.continue{
+.continue {
     margin-left: 35%;
 }
-.continue { letter-spacing: 7px;}
-.warHis { letter-spacing: 7px;}
+.continue { letter-spacing: 7px; }
+.warHis { letter-spacing: 7px; }
 .truth  { letter-spacing: 7px; }
 .Docbutton { letter-spacing: 5px; }
 .hisbutton { letter-spacing: 7px; }
 .puzbutton { letter-spacing: 7px; }
 
-/* Shared Hover States */
+
 .continue:hover,
 .warHis:hover,
 .truth:hover,
@@ -229,7 +231,7 @@ nav, .navbar {
                 0 2px 0 #2a3946;
 }
 
-/* 9. FLEX LAYOUT CONTAINERS & TOGGLES */
+
 .button-container {
     display: flex;
     justify-content: center;
@@ -242,19 +244,19 @@ nav, .navbar {
     display: none !important;
 }
 
-.theyareLying{
+
+.theyareLying {
     background-color: black;
     border: 3px solid #59b7ff;
     width: 90%;
     max-width: 1200px;
-    margin-left: 5%;
-    margin-top: 5%;
+    margin: 5% auto 0 auto; 
     box-sizing: border-box;
 }
 
-.darkside{
+.darkside {
     width: 50%;
-    min-height: 50x;
+    min-height: 50px;
     border: 2px solid grey;
     background: red;
     text-align: center;
@@ -262,13 +264,16 @@ nav, .navbar {
     margin: 5% auto 0 auto; 
     padding: 20px;
 }
-.darksideT{
+
+.darksideT {
     font-size: 30px;
     font-family: "Aldrich";
     font-weight: bold;
     color: white;
+    -webkit-text-stroke: 1px #4f6d86;
 }
-.theyareLyingS{
+
+.theyareLyingS {
     color: red;
     font-size: 40px;
     font-family: "Aldrich";
@@ -276,42 +281,8 @@ nav, .navbar {
     text-align: center;
 }
 
-.darksideT{
-    -webkit-text-stroke: 1px #4f6d86;
-}
 
-.warning{
-    background: #FF0000;
-    width: 750px;
-    height: 50px;
-    margin-left: 19%;
-    margin-top: 20%;
-}
-.warningText{
-    font-size: 40px;
-    font-family: 'Aldrich';
-    font-style:normal;
-    color: whitesmoke;
-}
-
-.taskBox.compromised {
-    border: 2px dashed #ff3333;
-    background-color: rgba(255, 51, 51, 0.05);
-    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
-}
-
-.taskBox.compromised .decrypt-me {
-color: #ff3333;
-font-weight: bold;
-animation: textFlicker 0.15s infinite alternate;
-}
-
-@keyframes textFlicker {
-    0% {opacity: 0.95; }
-    100% { opacity: 1; }    
-}
-
-#propaganda-feed{
+#propaganda-feed {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -345,4 +316,96 @@ animation: textFlicker 0.15s infinite alternate;
     text-align: center;
     margin-top: 5px;
     width: 100%;
+}
+
+
+.warning {
+    background: #FF0000;
+    width: 750px;
+    height: 50px;
+    margin-left: 19%;
+    margin-top: 20%;
+}
+
+.warningText {
+    font-size: 40px;
+    font-family: 'Aldrich';
+    font-style: normal;
+    color: whitesmoke;
+}
+
+
+.taskBox.compromised {
+    border: 2px dashed #ff3333;
+    background-color: rgba(255, 51, 51, 0.05);
+    box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+}
+
+.taskBox.compromised .decrypt-me {
+    color: #ff3333;
+    font-weight: bold;
+    animation: textFlicker 0.15s infinite alternate;
+}
+
+@keyframes textFlicker {
+    0% { opacity: 0.95; }
+    100% { opacity: 1; }    
+}
+
+
+.ad-box {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 30px;
+    width: 90%;
+    max-width: 1200px;
+    margin: 40px auto;
+    box-sizing: border-box;
+}
+
+.ad-card {
+    flex: 1;
+    background: #2d4152;
+    border: 3px solid #59b7ff;
+    padding: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.ad-header {
+    background: #ff3333;
+    color: #000000;
+    font-family: "Aldrich";
+    font-weight: bold;
+    font-size: 11px;
+    padding: 2px 8px;
+    letter-spacing: 2px;
+    margin-bottom: 12px;
+}
+
+
+body.glitch-alarm .ad-header {
+    background: #00ffcc;
+    animation: textFlicker 0.2s infinite alternate;
+}
+
+.ad-title {
+    color: #4dc0ff;
+    font-family: "Aldrich";
+    font-size: 18px;
+    margin: 0 0 10px 0;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.ad-text {
+    color: #ffffff;
+    font-family: "Aldrich";
+    font-size: 13px;
+    line-height: 1.4;
+    margin: 0;
 }
