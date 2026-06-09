@@ -85,6 +85,20 @@ THEY ARE LYING
         </p>
     </div>
 
+    <div class="ad-box">
+        <div class="ad-card">
+            <div class="ad-header">SPONSORED DIRECTIVE</div>
+            <h3 class="ad-title">Neural-Link Sync</h3>
+            <p class="ad-text">Is your sleep cycle unregulated? Sync with the Hive-Mind frequency nightly for optimal restorative dreaming sequences.</p>
+        </div>
+
+        <div class="ad-card">
+            <div class="ad-header">SECURITY ADVISORY</div>
+            <h3 class="ad-title">Enforcer Ware</h3>
+            <p class="ad-text">Premium ballistic reinforcement patterns. Secure your personal hardware assets against sector threats and rebel data breaches.</p>
+        </div>
+    </div>
+
 <script src="text-decrypt.js"></script>
 <script src="click-spark.js"></script>
 
@@ -111,13 +125,21 @@ THEY ARE LYING
 
         const propagandaFeed = document.getElementById('propaganda-feed');
         const secretMsgBox = document.getElementById('secret-msg-box');
+        const adBox = document.querySelector('.ad-box');
         const puzzleComplete = localStorage.getItem('puzzleComplete');
 
         if (puzzleComplete === 'true') {
             document.body.classList.add('glitch-alarm');
 
 
-            if (propagandaFeed) propagandaFeed.style.display = 'none';
+            if (propagandaFeed) {
+
+             propagandaFeed.style.display = 'none';
+            }
+
+            if (adBox) {
+                adBox.style.display = 'none';
+            }
 
             secretMsgBox.classList.remove('hidden');
 
