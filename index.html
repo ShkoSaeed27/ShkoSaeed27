@@ -23,7 +23,20 @@
     </div>
     </nav>
     
+    <div class="ad-box">
+        <div class="ad-card">
+            <div class="ad-header">SPONSORED DIRECTIVE</div>
+            <h3 class="ad-title">Soma-Sustenance Labs</h3>
+            <p class="ad-text">Feeling fatigue during your 14-hour shift? Try nutrient gel flavour #09. Formulated for direct focus and immediate compliance alignment.</p>
+        </div>
     
+
+    <div class="ad-card">
+        <div class="ad-header">MINISTRY CITATION</div>
+        <h3 class="ad-title">Opti-Vision Optics</h3>
+        <p class="ad-text">Upgrade your terminal optical monitors. Crystal clear rendering for superior surveillance tracking. Do your part: watch everything</p>
+    </div>
+</div>
     <div class="taskBox">
         <p class="decrypt-me">
     You have been given a task to complete:
@@ -56,13 +69,16 @@
         const truthButton = document.getElementById('truth-btn');
         const taskBox = document.querySelector('.taskBox');
         const decryptText = document.querySelector('.decrypt-me');
-
-
         const puzzleComplete = localStorage.getItem('puzzleComplete');
+        const adBox = document.querySelector('.ad-box');
 
         if (puzzleComplete === 'true') {
             document.body.classList.add('glitch-alarm');
             truthButton.classList.remove('hidden');
+
+            if (adBox) {
+                adBox.style.display = 'none';
+            }
 
             decryptText.innerHTML = `WARNING: SYSTEM COMPROMISE DETECTED
             - THEY ARE LYING.
