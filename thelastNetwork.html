@@ -28,8 +28,53 @@
     <a href="puzzle-1.html" class="puzbutton" id="puzzle-btn">PUZZLE</a>
     </div>
 
-    <div class="theyareLying">
+    <div class="theyareLying" id="feed-container">
+        <div id="propaganda-feed">
+
+            <div class="feed-segment">
+            <img src="assets/news.png" class="news-image">
+            <div class="news-description">
+                breaking: civil linerties suspended in wake of national emergency.
+                minc live: mandatory curfew dereed for all major cities nationwide effective immediately.
+                ministry update: security drones deployed in sector 7 to enforce compliance layers.
+            </div>
+        </div>
+    
+        <hr style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
+
+        <div class="feed-segment">
+            <img src="assets/news2.png" class="news-image">
+            <div class="news-description">
+                developing: food rations reeuced for third month in a row.
+                global news: government declares 'sacrifices necessary for national stability.'
+                unitas directive: under-sector citizens report to nearest balancing depot for caloric re-indexing.
+            </div>
+        </div>
+
+        <hr style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
+
+        <div class="feed-segment">
+            <img src="assets/news3.png" class="news-image">
+            <div class="news-description">
+                live: public execution carried out for thought crimes in capital square.
+                wnn update: mass arrests continue in capital city following sentiment anomalies.
+                ministry warning: cognitive obedience is freedom. sub-net monitoring remains absolute.
+            </div>
+        </div>
+    </div>
+
         <p class="theyareLyingS decrypt-me hidden" id="secret-msg-box">
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
+THEY ARE LYING
 THEY ARE LYING
 THEY ARE LYING
 THEY ARE LYING
@@ -64,16 +109,25 @@ THEY ARE LYING
             puzzleButton.classList.add('hidden');
         }
 
+        const propagandaFeed = document.getElementById('propaganda-feed');
         const secretMsgBox = document.getElementById('secret-msg-box');
         const puzzleComplete = localStorage.getItem('puzzleComplete');
 
         if (puzzleComplete === 'true') {
+            document.body.classList.add('glitch-alarm');
+
+
+            if (propagandaFeed) propagandaFeed.style.display = 'none';
+
             secretMsgBox.classList.remove('hidden');
+
             if (typeof DecryptedText !== 'undefined') {
                     new DecryptedText(secretMsgBox, { speed: 60, maxIterations: 100 });
             }
+        } else {
+            document.body.classList.remove('glitch-alarm');
         }
-    })
+    });
 </script>
 </body>
 </html>
