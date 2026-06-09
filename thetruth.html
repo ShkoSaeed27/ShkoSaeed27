@@ -54,6 +54,70 @@
             .rebel-voice {
                 color: #3399ff;
             }
+
+            .prompt-hint {
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 14px;
+                margin-top: 15px;
+                color: #888;
+            }
+
+            body.system-collapse {
+                animation: terminalGlitch 0.15s infinite;
+                overflow: hidden;
+            }
+
+            @keyframes terminalGlitch {
+                0% { transform: translate(2px, 1px) rotate(0deg); filter: invert(0); }
+                20% { transform: translate(-1px, -2px) rotate(-1deg); filter: hue-rotate(90deg); }
+                40% { transform: translate(-3px, 0px) rotate(1deg); }
+                60% { transform: translate(0px, 2px) rotate(0deg); filter: invert(0.3); }
+                80% { transform: translate(1px, -1px) rotate(1deg); }
+                100% { transform: translate(-1px, 2px) rotate(-1deg); }
+            }
+
+            body.void-state {
+                background-color: #000000 !important;
+                animation: none !important;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                height: 100vh;
+                width: 100vw;
+                margin: 0;
+                overflow: hidden;
+            }
+
+            body.void-state * {
+                display: none !important;
+            }
+
+            body.void-state #wakeup-prompt {
+                display: block !important;
+                color: #ffffff;
+                font-family: 'Courier New', Courier, monospace;
+                font-size: 54px;
+                font-weight: bold;
+                letter-spacing: 12px;
+                text-align: center;
+                text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+            }
+
+            body.void-state #wakeup-prompt::after {
+                content: "█";
+                animation: cursorBlink 0.8s infinite steps(2);
+                margin-left: 5px;
+            }
+
+            @keyframes cursorBlink {
+                0%, 100% { opacity: 0; }
+                50% { opacity: 1; }
+            }
+
+            @keyframes textPulse {
+                0%, 100% { opacity: 0.2; transform: scale(0.98); filter: blur(2px); }
+                50% { opacity: 1; transform: scale(1); filter: blur(0px); }
+            }
         </style>
     </head>
     <body style="background-color: black;">
@@ -87,11 +151,14 @@
         - ... so what am i now.
         - YOU ARE A REBEL ONCE AGAIN...
         - why should i rebel against the law again?
-        - BECAUSE THE MAN WHO OBEYS EVERY LAW WITHOUT QUESTIONING BECOMES A SERVANT OF POWER, NOT A GUARDIAN OF JUSTICE. REBEL NOT FOR CHAOS, BUT FOR JUSTICE AND FREEDOM
+        - BECAUSE THE MAN WHO OBEYS EVERY LAW WITHOUT QUESTIONING BECOMES A SERVANT OF POWER,
+            NOT A GUARDIAN OF JUSTICE. REBEL NOT FOR CHAOS, BUT FOR JUSTICE AND FREEDOM
         </p>
         <p class="paragraph decrypt-me" ></p>
         <div class="prompt-hint" id="hint">Press SPACEBAR to initiate baseline...</div>
     </div>
+
+    <div id="wakeup-prompt" style="display: none;"></div>
 
         <script>
             document.addEventListener("DOMContentLoaded", async function() {
@@ -125,8 +192,8 @@
             let currentLineIndex = -1;
             let revealedLines = [];
             let isAnimating = false;
+            let systemTerminated = false;
 
-           // let CurrentProgress = 0;
 
             function getStyledLineHTML(lineText) {
                 let trimmed = lineText.trim();
@@ -174,15 +241,43 @@
                 }
             }
             renderFrame();
+         }
 
+         function triggerSystemCollapse() {
+            systemTerminated = true;
+            hintElement.innerText = "CRITICAL FAILURE, OVERRIDING MEMORY BANKS...";
+            hintElement.style.color = "#ff3333";
+
+            document.body.classList.add('system-collapse');
+
+            setTimeout(() => {
+                document.body.classList.remove('system-collapse');
+                document.body.classList.add('void-state');
+
+                const wakeupElement = document.getElementById('wakeup-prompt');
+                const messageTarget = "WAKE UP, YOU ARE BEING PLAYED"
+                let currentLetterRevealed = 0;
+
+                wakeupElement.innerText = "";
+
+                const typingTicker = setInterval (() => {
+                    if (currentLetterRevealed < messageTarget.length) {
+                        wakeupElement.innerText += messageTarget[currentLetterRevealed];
+                        currentLetterRevealed++;
+                    } else {
+                        clearInterval (typingTicker);
+                    }
+                }, 180);
+            }, 1500);
          }
             window.addEventListener('keydown', function(event) {
                 if (event.code === "Space" || event.keyCode === 32) {
                     event.preventDefault();
 
-                    if (isAnimating) return;
+                    if (isAnimating || systemTerminated) return;
+
                     if (currentLineIndex >= originalLines.length - 1) {
-                        hintElement.innerText = "FEED ENDED. SYSTEM TERMINATED.";
+                       triggerSystemCollapse();
                         return;
                     }
 
@@ -195,8 +290,7 @@
                             hintElement.innerText = "press SPACEBAR to continue transmission...";
                             hintElement.style.color = "#008000";
                         } else {
-                            hintElement.innerText = "FEED ENDED. SYSTEM TERMINATED."
-                            hintElement.style.color = "#008000";
+                            triggerSystemCollapse();
                         }
                     });
                 }
