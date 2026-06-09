@@ -8,6 +8,11 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="style.css">
+
+<style>
+
+
+</style>
 </head>
 
 <body class="body">
@@ -49,12 +54,25 @@
 <script>
     document.addEventListener("DOMContentLoaded", function(){
         const truthButton = document.getElementById('truth-btn');
+        const taskBox = document.querySelector('.taskBox');
+        const decryptText = document.querySelector('.decrypt-me');
+
+
         const puzzleComplete = localStorage.getItem('puzzleComplete');
 
         if (puzzleComplete === 'true') {
+            document.body.classList.add('glitch-alarm');
             truthButton.classList.remove('hidden');
+
+            decryptText.innerHTML = `WARNING: SYSTEM COMPROMISE DETECTED
+            - THEY ARE LYING.
+            - THE TASKS ARE A FABRICATION
+            - ENTER THE TRUTH PORTAL IMMEDIATLY.`;
+
+            taskBox.classList.add('compromised');
         } else {
             truthButton,classList.add('hidden');
+            taskBox.classList.remove('compromised')
         }
     });
 </script>
