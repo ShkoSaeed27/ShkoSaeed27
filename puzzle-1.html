@@ -106,35 +106,41 @@ const solution = [
 ]
 ];
 
-p1 = document.getElementById("p1");
+const p1 = document.getElementById("p1");
+const p2 = document.getElementById("p2");
+const p3 = document.getElementById("p3");
+const p4 = document.getElementById("p4");
 
 function initaliseTiles(){
-    // Load the correct pieces into the board, using the map
-    // Set the rotations for each piece at the start of the game using the MAP
     map.forEach(element => {
         element.forEach(piece =>{
-            //console.log(piece[0]);
-            piece_id = document.getElementById(piece[1]);
+            let piece_id = document.getElementById(piece[1]);
             piece_id.style.rotate = piece[0] + "deg";
             piece_id.setAttribute("data-rotation", piece[0]);
-        })
+        });
     });
 }
 
 initaliseTiles();
 
 function tileClickHandler(e){
-    // Updating the position when clicked
-    //console.log(e.target.id)
               cur_rot = parseInt(e.target.getAttribute("data-rotation"));
               cur_row = parseInt(e.target.getAttribute("data-map-row"));
               cur_col = parseInt(e.target.getAttribute("data-map-col"));
+              
+              
+              const correct_rot = solution[cur_row][cur_col][0];
+
+              if (cur_rot === correct_rot) {
+                console.log("piece locked! this one is already correct.")
+                return;
+              }
+
               let new_rot = cur_rot + 90;
               if(new_rot == 360){
                 new_rot = 0;
               }
-              //console.log(new_rot);
-              
+
               e.target.style.rotate = `${new_rot}deg`;
               map[cur_row][cur_col][0] = new_rot
               e.target.setAttribute("data-rotation", new_rot);              
