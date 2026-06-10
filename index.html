@@ -10,8 +10,15 @@
 <link rel="stylesheet" href="style.css">
 
 <style>
-
-
+    .ad-card.corrupted-ad {
+        background: #000000 !important;
+        border: 2px dashed #ff3333 !important;
+        box-shadow: 0 0 15px rgba(255, 51, 51, 0.4);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 30px 10px;
+    }
 </style>
 </head>
 
@@ -22,6 +29,8 @@
         <h1 class="wTitle"> THE LAST WEB</h1>
     </div>
     </nav>
+
+
     
     <div class="ad-box">
         <div class="ad-card">
@@ -36,6 +45,24 @@
         <h3 class="ad-title">Opti-Vision Optics</h3>
         <p class="ad-text">Upgrade your terminal optical monitors. Crystal clear rendering for superior surveillance tracking. Do your part: watch everything</p>
     </div>
+
+
+    <div class="ad-card">
+        <div class="ad-header">COMPLIANCE MOTIVATION</div>
+        <h3 class="ad-title">Aegis Neural-Sync</h3>
+        <p class="ad-text">re rogue thoughts disrupting your designated rest cycles? Synchronize with the grid network. Peace is found in absolute algorithmic calibration. Disconnect from doubts.</p>
+    </div>
+
+
+    <div class="ad-card">
+        <div class="ad-header">CIVIC HARMONY</div>
+        <h3 class="ad-title">Veritas Social-Grid</h3>
+        <p class="ad-text">Are your daily micro-expressions matching baseline happiness metrics? Avoid unsanctioned isolation intervals. Log your mandatory smiles. Optimism is the only logical choice</p>
+    </div>
+
+
+    
+    
 </div>
     <div class="taskBox">
         <p class="decrypt-me">
@@ -52,6 +79,7 @@
     <a href="puzzle-2.html" class="TRUTH hidden" id="truth-btn">
     <p class="TRUTHt">TRUTH</p>
     </a>
+
     <script src="click-spark.js"></script>
 
 <script>
@@ -71,14 +99,18 @@
         const decryptText = document.querySelector('.decrypt-me');
         const puzzleComplete = localStorage.getItem('puzzleComplete');
         const adBox = document.querySelector('.ad-box');
+        const adCards = document.querySelectorAll('.ad-card');
 
         if (puzzleComplete === 'true') {
             document.body.classList.add('glitch-alarm');
+           if (truthButton){
             truthButton.classList.remove('hidden');
+           } 
 
-            if (adBox) {
-                adBox.style.display = 'none';
-            }
+           adCards.forEach(card => {
+            card.classList.add('corrupted-ad');
+            card.innerHTML = `<span class="theyareLyingS">THEY ARE LYING</span>`;
+           });
 
             decryptText.innerHTML = `WARNING: SYSTEM COMPROMISE DETECTED
             - THEY ARE LYING.
@@ -87,8 +119,11 @@
 
             taskBox.classList.add('compromised');
         } else {
-            truthButton,classList.add('hidden');
-            taskBox.classList.remove('compromised')
+            if (truthButton) {truthButton,classList.add('hidden');
+        }
+
+            if(taskBox){ taskBox.classList.remove('compromised');
+            }
         }
     });
 </script>
