@@ -48,10 +48,11 @@ nav, .navbar {
 
 .HtitleBox,
 .titleBox {
-    display: inline-block;
-    background: #335364;
+   position: absolute;
+   margin-left: 21%;
+    background: #051d2d;
     border: 1px dashed #59b7ff;
-    padding: 5px 30px;      
+    padding: 5px 300px;      
 }
 
 .wTitle {
@@ -59,7 +60,7 @@ nav, .navbar {
     -webkit-text-stroke: 1px #4DC0FF;
     font-family: "Aldrich";
     letter-spacing: 25px;   
-    margin: 0;
+    margin: 5px;
 }
 
 
@@ -89,15 +90,17 @@ nav, .navbar {
 }
 
 .hisPara {
-    width: 800px;
+    position: absolute;
+    width: 1500px;
     min-height: auto;
-    margin-left: 17%;
+    margin-left: 10%;
+    margin-top: 7%;
     background-color: #D8FFFC;
 }
 
 .paragraph {
     text-align: center;
-    font-size: 28px;
+    font-size: 38px;
 }
 
 
@@ -125,7 +128,7 @@ nav, .navbar {
     background: #335364;
     border: 2px solid #4DC0FF;
     margin-left: 39%;
-    margin-top: 65px;
+    margin-top: 80px;
     font-size: 20px;
 }
 
@@ -181,13 +184,23 @@ nav, .navbar {
     letter-spacing: 2px;
 }
 
+.hisbutton{
+    margin-top: 40px;
+}
+.Docbutton{
+    margin-top: 40px;
+}
+.puzbutton{
+    margin-top: 40px;
+}
+.puzbutton
+
 .TRUTH {
-    background: #36454F;
     border: 0;
     border-radius: 0;
-    margin-left: 90%;
     width: 50px;
     text-align: center;
+    margin: 20%;
 }
 
 .warHis {
@@ -341,6 +354,7 @@ nav, .navbar {
     border: 2px dashed #ff3333;
     background-color: rgba(255, 51, 51, 0.05);
     box-shadow: 0 0 15px rgba(255, 51, 51, 0.2);
+    margin-top: 10%;
 }
 
 .taskBox.compromised .decrypt-me {
@@ -362,7 +376,8 @@ nav, .navbar {
     gap: 30px;
     width: 90%;
     max-width: 1200px;
-    margin: 40px auto;
+    margin: 50px auto;
+    margin-top: 90px;
     box-sizing: border-box;
 }
 
