@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    
 </head>
 
 <body>
 
     <div class="navbar">
         <a href="index.html" class="return">
-            <img src="assets/keyboard_return.png" class="return">
+            <img src="assets/keyboard_return.png" class="return" style="margin: 50px;">
         </a>
 
         <div class="titleBox">
@@ -22,134 +21,143 @@
         </div>
     </div>
         
-    <div class = "button-container">
-    <a href="documents.html" class="Docbutton">DOCUMENTS</a>
-    <a href="history.html" class="hisbutton">HISTORY</a>
-    <a href="puzzle-1.html" class="puzbutton" id="puzzle-btn">PUZZLE</a>
+    <div class="button-container">
+        <a href="documents.html" class="Docbutton">DOCUMENTS</a>
+        <a href="history.html" class="hisbutton">HISTORY</a>
+        <a href="puzzle-1.html" class="puzbutton" id="puzzle-btn">PUZZLE</a>
     </div>
 
     <div class="theyareLying" id="feed-container">
-        <div id="propaganda-feed">
+        
+        <div class="propaganda-feed-row">
+            <div class="feed-segment">
+                <img src="assets/news.png" class="news-image">
+                <div class="news-description">
+                    breaking: civil liberties suspended in wake of national emergency.
+                    minc live: mandatory curfew decreed for all major cities nationwide effective immediately.
+                    ministry update: security drones deployed in sector 7 to enforce compliance layers.
+                </div>
+            </div>
+        
+            <hr class="news-divider" style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
 
             <div class="feed-segment">
-            <img src="assets/news.png" class="news-image">
-            <div class="news-description">
-                breaking: civil linerties suspended in wake of national emergency.
-                minc live: mandatory curfew dereed for all major cities nationwide effective immediately.
-                ministry update: security drones deployed in sector 7 to enforce compliance layers.
+                <img src="assets/news2.png" class="news-image">
+                <div class="news-description">
+                    developing: food rations reduced for third month in a row.
+                    global news: government declares 'sacrifices necessary for national stability.'
+                    unitas directive: under-sector citizens report to nearest balancing depot for caloric re-indexing.
+                </div>
+            </div>
+
+            <hr class="news-divider" style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
+
+            <div class="feed-segment">
+                <img src="assets/news3.png" class="news-image">
+                <div class="news-description">
+                    live: public execution carried out for thought crimes in capital square.
+                    wnn update: mass arrests continue in capital city following sentiment anomalies.
+                    ministry warning: cognitive obedience is freedom. sub-net monitoring remains absolute.
+                </div>
             </div>
         </div>
-    
-        <hr style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
 
-        <div class="feed-segment">
-            <img src="assets/news2.png" class="news-image">
-            <div class="news-description">
-                developing: food rations reeuced for third month in a row.
-                global news: government declares 'sacrifices necessary for national stability.'
-                unitas directive: under-sector citizens report to nearest balancing depot for caloric re-indexing.
+        <div class="propaganda-feed-row" style="margin: 45px auto 0 auto; width: 100%;">
+            <div class="feed-segment">
+                <img src="assets/news4.png" alt="Sector Grid Terminal Monitoring" class="news-image">
+                <p class="news-description">
+                    <strong>breaking:</strong> Government cracks down on dissent. MNC live update: thousands detained in overnight raids across the country following severe sentiment anomalies. Increased drone coverage deployed to monitor main squares.
+                </p>
+            </div>
+
+            <div class="feed-segment">
+                <img src="assets/news5.png" alt="Industrial Processing Center" class="news-image">
+                <p class="news-description">
+                    <strong>developing:</strong> Curfew extended in all districts. UNN update: all citizens must remain indoors between 19:00 - 06:00. Ministry notification: obedience ensures safety. Non-compliance ensures immediate punishment.
+                </p>
+            </div>
+
+            <div class="feed-segment">
+                <img src="assets/news6.png" alt="Security Patrol Division" class="news-image">
+                <p class="news-description">
+                    <strong>live:</strong> Unauthorized gathering dispersed in District 7. UNN signal status: sync at 47%. Multiple arrests made. Remain calm. Remain loyal. The Ministry thanks you for your cooperation; report suspicious activity.
+                </p>
             </div>
         </div>
 
-        <hr style="border: none; border-top: 3px solid #59b7ff; margin: 30px 0; opacity: 0.5;">
-
-        <div class="feed-segment">
-            <img src="assets/news3.png" class="news-image">
-            <div class="news-description">
-                live: public execution carried out for thought crimes in capital square.
-                wnn update: mass arrests continue in capital city following sentiment anomalies.
-                ministry warning: cognitive obedience is freedom. sub-net monitoring remains absolute.
-            </div>
-        </div>
-    </div>
-
-        <p class="theyareLyingS decrypt-me hidden" id="secret-msg-box">
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-THEY ARE LYING
-
+        <p class="theyareLyingS decrypt-me hidden" id="secret-msg-box" style="white-space: pre-line;">
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
+            THEY ARE LYING
         </p>
     </div>
 
-    <div class="ad-box">
-        <div class="ad-card">
-            <div class="ad-header">SPONSORED DIRECTIVE</div>
-            <h3 class="ad-title">Neural-Link Sync</h3>
-            <p class="ad-text">Is your sleep cycle unregulated? Sync with the Hive-Mind frequency nightly for optimal restorative dreaming sequences.</p>
-        </div>
+    <script src="text-decrypt.js"></script>
+    <script src="click-spark.js"></script>
 
-        <div class="ad-card">
-            <div class="ad-header">SECURITY ADVISORY</div>
-            <h3 class="ad-title">Enforcer Ware</h3>
-            <p class="ad-text">Premium ballistic reinforcement patterns. Secure your personal hardware assets against sector threats and rebel data breaches.</p>
-        </div>
-    </div>
+    <script>
+        const sparkEffect = new Clickspark({
+            sparkColor: '#fff',
+            sparkSize: 10,
+            sparkRadius: 15,
+            sparkCount: 8,
+            duration: 400,
+            easing: 'ease-out'
+        });
+    </script>
 
-<script src="text-decrypt.js"></script>
-<script src="click-spark.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function(){
+            const puzzleButton = document.getElementById('puzzle-btn');
+            const isUnlocked = localStorage.getItem('puzzleUnlocked');
 
-<script>
-    const sparkEffect = new Clickspark({
-        sparkColor: '#fff',
-        sparkSize: 10,
-        sparkRadius: 15,
-        sparkCount: 8,
-        duration: 400,
-        easing: 'ease-out'
-    });
-</script>
-<script>
-    document.addEventListener("DOMContentLoaded", function(){
-        const puzzleButton = document.getElementById('puzzle-btn');
-        const isUnlocked = localStorage.getItem('puzzleUnlocked');
-
-        if (isUnlocked === 'true') {
-            puzzleButton.classList.remove('hidden');
-        } else{
-            puzzleButton.classList.add('hidden');
-        }
-
-        const propagandaFeed = document.getElementById('propaganda-feed');
-        const secretMsgBox = document.getElementById('secret-msg-box');
-        const adBox = document.querySelector('.ad-box');
-        const puzzleComplete = localStorage.getItem('puzzleComplete');
-
-        if (puzzleComplete === 'true') {
-            document.body.classList.add('glitch-alarm');
-
-
-            if (propagandaFeed) {
-
-             propagandaFeed.style.display = 'none';
+            if (isUnlocked === 'true') {
+                puzzleButton.classList.remove('hidden');
+            } else {
+                puzzleButton.classList.add('hidden');
             }
+            const secretMsgBox = document.getElementById('secret-msg-box');
+            const puzzleComplete = localStorage.getItem('puzzleComplete');
+            const newsRows = document.querySelectorAll('.propaganda-feed-row');
+            const newsDividers = document.querySelectorAll('.news-divider');
+            const adBox = document.querySelector('.ad-box');
 
-            if (adBox) {
-                adBox.style.display = 'none';
+            if (puzzleComplete === 'true') {
+                document.body.classList.add('glitch-alarm');
+                newsRows.forEach(row => {
+                    row.style.setProperty('display', 'none', 'important');
+                });
+                newsDividers.forEach(divider => {
+                    divider.style.setProperty('display', 'none', 'important');
+                });
+
+                if (adBox) {
+                    adBox.style.setProperty('display', 'none', 'important');
+                }
+                if (secretMsgBox) {
+                    secretMsgBox.classList.remove('hidden');
+                    if (typeof DecryptedText !== 'undefined') {
+                        new DecryptedText(secretMsgBox, { speed: 60, maxIterations: 100 });
+                    }
+                }
+            } else {
+                document.body.classList.remove('glitch-alarm');
             }
-
-            secretMsgBox.classList.remove('hidden');
-
-            if (typeof DecryptedText !== 'undefined') {
-                    new DecryptedText(secretMsgBox, { speed: 60, maxIterations: 100 });
-            }
-        } else {
-            document.body.classList.remove('glitch-alarm');
-        }
-    });
-</script>
+        });
+    </script>
 </body>
 </html>
